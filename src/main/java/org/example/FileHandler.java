@@ -13,6 +13,7 @@ public class FileHandler {
     static HashMap<Character, String> dictRus = new HashMap<>();
     static HashMap<Character, String> dictEng = new HashMap<>();
     static List<String> result = new ArrayList<>();
+    static int count;
 
     public static String translateToEng(String string) {
         if (dictRus.isEmpty()) {
@@ -49,9 +50,9 @@ public class FileHandler {
             dict.put('э', "e'");
             dict.put('ю', "yu");
             dict.put('я', "ya");
-                for (HashMap.Entry<Character, String> vac :
+            for (HashMap.Entry<Character, String> vac :
                     dict.entrySet()) {
-                dictRus.put(vac.getKey(),vac.getValue());
+                dictRus.put(vac.getKey(), vac.getValue());
                 dictRus.put(Character.toUpperCase(vac.getKey()), vac.getValue().toUpperCase());
             }
 
@@ -134,5 +135,27 @@ public class FileHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String countSymbol(String string) {
+        if (App.symbol != null) {
+            if (App.symbol.length() == 1) {
+                for (int i = 0; i < string.toCharArray().length; i++) {
+                    if (string.toCharArray()[i] == App.symbol.charAt(0)) {
+                        count++;
+                    }
+                }
+            } else {
+                int n = string.length();
+                String[] symbols = new String[n];
+                for (int i = 0; i < symbols.length - App.symbol.length() + 1; i++) {
+                    symbols[i] = string.subSequence(i, i + App.symbol.length()).toString();
+                    if (symbols[i].equals(App.symbol)) {
+                        count++;
+                    }
+                }
+            }
+        }
+        return string;
     }
 }

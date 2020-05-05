@@ -10,8 +10,15 @@ import java.util.Random;
  */
 public class App {
     public static String file;
+    public static String symbol;
     public static void main(String[] args) {
         file = args[1];
+        try {
+            symbol = args[2];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            symbol = null;
+        }
+
         try {
             Files.lines(Paths.get(args[0]))
                     .map(FileHandler::translateToEng)
@@ -19,7 +26,9 @@ public class App {
                     .map(FileHandler::upperCase)
 //                    .map(FileHandler::lowerCase)
 //                    .forEach(System.out::println);
+                    .map(FileHandler::countSymbol)
                     .forEach(FileHandler::writeToFile);
+            System.out.println(FileHandler.count);
 
         } catch (IOException e) {
             if(e.toString().contains("NoSuchFileException")){
