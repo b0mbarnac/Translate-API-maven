@@ -9,8 +9,9 @@ import java.util.Random;
  * Hello world!
  */
 public class App {
+    public static String file;
     public static void main(String[] args) {
-
+        file = args[1];
         try {
             Files.lines(Paths.get(args[0]))
                     .map(FileHandler::translateToEng)
@@ -21,7 +22,10 @@ public class App {
                     .forEach(FileHandler::writeToFile);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            if(e.toString().contains("NoSuchFileException")){
+                System.out.println("Файл для записи не найден.");
+            }
+
         }
 
 //        try (BufferedReader reader = new BufferedReader(new FileReader(args[0]));

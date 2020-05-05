@@ -130,7 +130,7 @@ public class FileHandler {
     public static void writeToFile(String string) {
         try {
             result.add(string);
-            Files.write(Paths.get("Out.txt"), result, StandardOpenOption.CREATE);
+            Files.write(Paths.get(App.file), result, StandardOpenOption.CREATE);
         } catch (IOException e) {
             e.printStackTrace();
         }
