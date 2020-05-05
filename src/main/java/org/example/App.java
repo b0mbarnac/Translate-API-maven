@@ -14,7 +14,7 @@ public class App {
         try {
             Files.lines(Paths.get(args[0]))
                     .map(FileHandler::translateToEng)
-//                    .map(FileHandler::translateToRus)
+                    .map(FileHandler::translateToRus)
                     .map(FileHandler::upperCase)
 //                    .map(FileHandler::lowerCase)
 //                    .forEach(System.out::println);

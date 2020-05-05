@@ -49,7 +49,7 @@ public class FileHandler {
             dict.put('э', "e'");
             dict.put('ю', "yu");
             dict.put('я', "ya");
-            for (HashMap.Entry<Character, String> vac :
+                for (HashMap.Entry<Character, String> vac :
                     dict.entrySet()) {
                 dictRus.put(vac.getKey(),vac.getValue());
                 dictRus.put(Character.toUpperCase(vac.getKey()), vac.getValue().toUpperCase());
@@ -107,26 +107,6 @@ public class FileHandler {
         }
         return result.toString();
     }
-
-
-//    public static String translateToEng(String string) {
-//        char[] chars = string.toCharArray();
-//        StringBuilder result = new StringBuilder();
-//        for (char aChar : chars) {
-//            result.append(dictRus.getOrDefault(aChar, aChar + ""));
-//        }
-//        return result.toString();
-//
-//    }
-//
-//    public static String translateToRus(String string) {
-//        char[] chars = string.toCharArray();
-//        StringBuilder result = new StringBuilder();
-//        for (char aChar : chars) {
-//            result.append(dictEng.getOrDefault(aChar, aChar + ""));
-//        }
-//        return result.toString();
-//    }
 
     public static String upperCase(String string) {
         char[] chars = string.toCharArray();
